@@ -21,7 +21,7 @@ namespace PeopleSearch.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.Sql("DELETE FROM People");
+            migrationBuilder.Sql("DELETE FROM People WHERE FirstName IN ('John', 'Jane') AND LastName IN ('Doe', 'Doe')");
         }
     }
 }
