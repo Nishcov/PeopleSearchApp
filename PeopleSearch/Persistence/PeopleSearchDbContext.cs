@@ -9,11 +9,11 @@ namespace PeopleSearch.Persistence
 {
     public class PeopleSearchDbContext : DbContext
     {
+        public DbSet<Person> People { get; set; }
+
         public PeopleSearchDbContext(DbContextOptions<PeopleSearchDbContext> options)
             : base(options)
         {
         }
-
-        public DbSet<Person> People { get; set; }
     }
 }
