@@ -14,26 +14,21 @@ namespace PeopleSearch.Controllers
     [Route("/api/people")]
     public class PeopleController : Controller
     {
-        private readonly PeopleSearchDbContext context;
         private readonly IMapper mapper;
         private readonly IPersonRepository repository;
+        private readonly IUnitOfWork unitOfWork;
 
-        public PeopleController(PeopleSearchDbContext context, IMapper mapper, IPersonRepository repository)
+        public PeopleController(IMapper mapper, IPersonRepository repository, IUnitOfWork unitOfWork)
         {
-            this.context = context;
             this.mapper = mapper;
             this.repository = repository;
+            this.unitOfWork = unitOfWork;
         }
 
         [HttpGet]
         public async Task<IEnumerable<PersonResource>> GetPeople()
         {
-            List<Person> peeps = await context.People
-                .Include(p => p.Interests)
-                .Include(p => p.Address)
-                .ToListAsync();
-
-            return mapper.Map<List<Person>, List<PersonResource>>(peeps);
+            return await repository.GetPeople();
         }
 
         [HttpGet("{id}")]
@@ -61,8 +56,8 @@ namespace PeopleSearch.Controllers
 
             Person person = mapper.Map<PersonResource, Person>(personResource);
 
-            context.People.Add(person);
-            await context.SaveChangesAsync();
+            repository.Add(person);
+            await unitOfWork.CompleteAsync();
 
             person = await repository.GetPerson(person.Id);
 

@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using PeopleSearch.Controllers.Resources;
 using PeopleSearch.Models;
 using System;
 using System.Collections.Generic;
@@ -10,10 +12,22 @@ namespace PeopleSearch.Persistence
     public class PersonRepository : IPersonRepository
     {
         private readonly PeopleSearchDbContext context;
+        private readonly IMapper mapper;
 
-        public PersonRepository(PeopleSearchDbContext context)
+        public PersonRepository(PeopleSearchDbContext context, IMapper mapper)
         {
             this.context = context;
+            this.mapper = mapper;
+        }
+
+        public async Task<IEnumerable<PersonResource>> GetPeople()
+        {
+            List<Person> peeps = await context.People
+                .Include(p => p.Interests)
+                .Include(p => p.Address)
+                .ToListAsync();
+
+            return mapper.Map<List<Person>, List<PersonResource>>(peeps);
         }
 
         public async Task<Person> GetPerson(int id)
@@ -22,6 +36,11 @@ namespace PeopleSearch.Persistence
                 .Include(p => p.Interests)
                 .Include(p => p.Address)
                 .SingleOrDefaultAsync(p => p.Id == id);
+        }
+
+        public void Add(Person person)
+        {
+            context.People.Add(person);
         }
     }
 }
