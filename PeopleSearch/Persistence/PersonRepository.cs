@@ -20,14 +20,12 @@ namespace PeopleSearch.Persistence
             this.mapper = mapper;
         }
 
-        public async Task<IEnumerable<PersonResource>> GetPeople()
+        public async Task<List<Person>> GetPeople()
         {
-            List<Person> peeps = await context.People
+            return await context.People
                 .Include(p => p.Interests)
                 .Include(p => p.Address)
                 .ToListAsync();
-
-            return mapper.Map<List<Person>, List<PersonResource>>(peeps);
         }
 
         public async Task<Person> GetPerson(int id)

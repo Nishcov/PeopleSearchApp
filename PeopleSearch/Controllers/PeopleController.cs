@@ -26,9 +26,11 @@ namespace PeopleSearch.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<PersonResource>> GetPeople()
+        public async Task<List<PersonResource>> GetPeople()
         {
-            return await repository.GetPeople();
+            List<Person> peeps = await repository.GetPeople();
+
+            return mapper.Map<List<Person>, List<PersonResource>>(peeps);
         }
 
         [HttpGet("{id}")]

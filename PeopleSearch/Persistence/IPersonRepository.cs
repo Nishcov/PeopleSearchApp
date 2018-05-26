@@ -9,7 +9,7 @@ namespace PeopleSearch.Persistence
 {
     public interface IPersonRepository
     {
-        Task<IEnumerable<PersonResource>> GetPeople();
+        Task<List<Person>> GetPeople();
 
         Task<Person> GetPerson(int id);
 
