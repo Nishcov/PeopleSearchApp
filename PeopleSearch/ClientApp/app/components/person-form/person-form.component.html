@@ -1,57 +1,59 @@
 <h1>New Person</h1>
+<p>
+    {{ person | json }}
+</p>
 <br />
 <h3>Name</h3>
-<form>
+<form (ngSubmit)="submit()">
     <div class="form-group">
-        <label for="FirstName">First</label>
-        <input id="FirstName" type="text" class="form-control" />
+        <label for="firstName">First</label>
+        <input id="firstName" type="text" class="form-control" [(ngModel)]="person.firstName" name="firstName" />
     </div>
     <div class="form-group">
-        <label for="LastName">Last</label>
-        <input id="LastName" type="text" class="form-control" />
+        <label for="lastName">Last</label>
+        <input id="lastName" type="text" class="form-control" [(ngModel)]="person.lastName" name="lastName" />
     </div>
     <br />
     <h3>Address</h3>
     <div class="form-group">
-        <label for="Address1">Street Address</label>
-        <input id="Address1" type="text" class="form-control" />
+        <label for="address1">Street Address</label>
+        <input id="address1" type="text" class="form-control" [(ngModel)]="person.address.address1" name="address1" />
     </div>
     <div class="form-group">
-        <label for="Address2">Address Line 2</label>
-        <input id="Address2" type="text" class="form-control" />
+        <label for="address2">Address Line 2</label>
+        <input id="address2" type="text" class="form-control" [(ngModel)]="person.address.address2" name="address2" />
     </div>
     <div class="form-group">
-        <label for="Locality">City</label>
-        <input id="Locality" type="text" class="form-control" />
+        <label for="locality">City</label>
+        <input id="locality" type="text" class="form-control" [(ngModel)]="person.address.locality" name="locality" />
     </div>
     <div class="form-group">
-        <label for="Province">State or Province</label>
-        <input id="Province" type="text" class="form-control" />
+        <label for="province">State or Province</label>
+        <input id="province" type="text" class="form-control" [(ngModel)]="person.address.province" name="province" />
     </div>
     <div class="form-group">
-        <label for="PostCode">Zip or Postcode</label>
-        <input id="PostCode" type="text" class="form-control" />
+        <label for="postCode">Zip or Postcode</label>
+        <input id="postCode" type="text" class="form-control" [(ngModel)]="person.address.postCode" name="postCode" />
     </div>
     <div class="form-group">
-        <label for="Country">Country</label>
-        <input id="Country" type="text" class="form-control" />
+        <label for="country">Country</label>
+        <input id="country" type="text" class="form-control" [(ngModel)]="person.address.country" name="country" />
     </div>
     <br />
     <h3>Other Info</h3>
     <div class="form-group">
-        <label for="Age">Age</label>
-        <input id="Age" type="text" class="form-control" />
+        <label for="age">Age</label>
+        <input id="age" type="text" class="form-control" [(ngModel)]="person.age" name="age" />
     </div>
     <div class="form-group">
-        <label for="Interests">Interests</label>
-        <input id="Interests" type="text" class="form-control" />
+        <label for="interests">Interests (separated by comma and space: "Reading, Cooking, etc.")</label>
+        <input id="interests" type="text" class="form-control" [(ngModel)]="person.interests" name="interests" />
     </div>
-    <button class="btn">Add another Interest</button>
     <br />
     <br />
     <div class="form-group">
-        <label for="Picture">Photo</label>
-        <input id="Picture" type="text" class="form-control" />
+        <label for="picture">Photo</label>
+        <input id="picture" type="text" class="form-control" />
     </div>
     <button class="btn">Upload</button>
     <br />

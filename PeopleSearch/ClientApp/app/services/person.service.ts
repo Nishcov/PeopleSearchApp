@@ -12,4 +12,9 @@ export class PersonService {
         return this.http.get('/api/people')
             .map(res => res.json());
     }
+
+    create(person: any) {
+        return this.http.post('/api/people', person)
+            .map(res => res.json());
+    }
 }
