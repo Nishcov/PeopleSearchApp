@@ -16,11 +16,13 @@ namespace PeopleSearch.Controllers
     {
         private readonly PeopleSearchDbContext context;
         private readonly IMapper mapper;
+        private readonly IPersonRepository repository;
 
-        public PeopleController(PeopleSearchDbContext context, IMapper mapper)
+        public PeopleController(PeopleSearchDbContext context, IMapper mapper, IPersonRepository repository)
         {
             this.context = context;
             this.mapper = mapper;
+            this.repository = repository;
         }
 
         [HttpGet]
@@ -37,10 +39,7 @@ namespace PeopleSearch.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPerson(int id)
         {
-            Person person = await context.People
-                .Include(p => p.Interests)
-                .Include(p => p.Address)
-                .SingleOrDefaultAsync(p => p.Id == id);
+            Person person = await repository.GetPerson(id);
 
             if (person == null)
             {
@@ -64,6 +63,8 @@ namespace PeopleSearch.Controllers
 
             context.People.Add(person);
             await context.SaveChangesAsync();
+
+            person = await repository.GetPerson(person.Id);
 
             PersonResource resourceResult = mapper.Map<Person, PersonResource>(person);
 

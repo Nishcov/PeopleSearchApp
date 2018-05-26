@@ -25,6 +25,8 @@ namespace PeopleSearch
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IPersonRepository, PersonRepository>();
+
             services.AddAutoMapper();
 
             services.AddDbContext<PeopleSearchDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
