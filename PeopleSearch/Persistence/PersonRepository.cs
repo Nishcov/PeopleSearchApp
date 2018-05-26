@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using PeopleSearch.Controllers.Resources;
+using PeopleSearch.Core;
 using PeopleSearch.Models;
 using System;
 using System.Collections.Generic;

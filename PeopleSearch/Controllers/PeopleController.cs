@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PeopleSearch.Controllers.Resources;
+using PeopleSearch.Core;
 using PeopleSearch.Models;
-using PeopleSearch.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +25,7 @@ namespace PeopleSearch.Controllers
             this.unitOfWork = unitOfWork;
         }
 
+        // Get full list of people from database
         [HttpGet]
         public async Task<List<PersonResource>> GetPeople()
         {
@@ -32,7 +33,8 @@ namespace PeopleSearch.Controllers
 
             return mapper.Map<List<Person>, List<PersonResource>>(peeps);
         }
-
+        
+        // Get single person from database
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPerson(int id)
         {
@@ -47,7 +49,8 @@ namespace PeopleSearch.Controllers
 
             return Ok(personResource);
         }
-
+        
+        // Add a person to the database
         [HttpPost]
         public async Task<IActionResult> CreatePerson([FromBody] PersonResource personResource)
         {

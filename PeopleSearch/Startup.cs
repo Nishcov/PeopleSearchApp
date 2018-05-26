@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using PeopleSearch.Persistence;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
+using PeopleSearch.Core;
 
 namespace PeopleSearch
 {
