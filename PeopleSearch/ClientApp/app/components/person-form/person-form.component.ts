@@ -23,16 +23,6 @@ export class PersonFormComponent implements OnInit {
 
     submit() {
         this.personService.create(this.person)
-            .subscribe(
-            x => console.log(x),
-            err => {
-                this.toastyService.error({
-                    title: 'Error',
-                    msg: 'An unexpected error has occurred.',
-                    theme: 'bootstrap',
-                    showClose: true,
-                    timeout: 5000
-                });
-            });
+            .subscribe(x => console.log(x));
     }
 }

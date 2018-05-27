@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ErrorHandler } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
@@ -12,6 +12,7 @@ import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { PersonFormComponent } from './components/person-form/person-form.component';
 import { PersonService } from './services/person.service';
+import { AppErrorHandler } from './app.error-handler';
 
 @NgModule({
     declarations: [
@@ -37,6 +38,7 @@ import { PersonService } from './services/person.service';
         ])
     ],
     providers: [
+        { provide: ErrorHandler, useClass: AppErrorHandler },
         PersonService
     ]
 })
