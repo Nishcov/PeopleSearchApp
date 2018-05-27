@@ -24,7 +24,6 @@ namespace PeopleSearch.Persistence
         public async Task<List<Person>> GetPeople()
         {
             return await context.People
-                .Include(p => p.Interests)
                 .Include(p => p.Address)
                 .ToListAsync();
         }
@@ -32,7 +31,6 @@ namespace PeopleSearch.Persistence
         public async Task<Person> GetPerson(int id)
         {
             return await context.People
-                .Include(p => p.Interests)
                 .Include(p => p.Address)
                 .SingleOrDefaultAsync(p => p.Id == id);
         }

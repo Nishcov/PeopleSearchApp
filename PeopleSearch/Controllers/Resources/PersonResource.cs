@@ -18,11 +18,6 @@ namespace PeopleSearch.Controllers.Resources
 
         public int Age { get; set; }
 
-        public ICollection<InterestResource> Interests { get; set; }
-
-        public PersonResource()
-        {
-            Interests = new Collection<InterestResource>();
-        }
+        public string Interests { get; set; }
     }
 }

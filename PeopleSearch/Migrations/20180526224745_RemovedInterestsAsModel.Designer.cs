@@ -11,9 +11,10 @@ using System;
 namespace PeopleSearch.Migrations
 {
     [DbContext(typeof(PeopleSearchDbContext))]
-    partial class PeopleSearchDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180526224745_RemovedInterestsAsModel")]
+    partial class RemovedInterestsAsModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -25,11 +25,8 @@ namespace PeopleSearch.Models
 
         public int Age { get; set; }
 
-        public ICollection<Interest> Interests { get; set; }
-
-        public Person()
-        {
-            Interests = new Collection<Interest>();
-        }
+        [Required]
+        [StringLength(255)]
+        public string Interests { get; set; }
     }
 }

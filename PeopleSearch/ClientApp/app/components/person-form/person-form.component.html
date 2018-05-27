@@ -4,50 +4,59 @@
 </p>
 <br />
 <h3>Name</h3>
-<form (ngSubmit)="submit()">
+<form #f="ngForm" (ngSubmit)="submit()">
     <div class="form-group">
         <label for="firstName">First</label>
-        <input id="firstName" type="text" class="form-control" [(ngModel)]="person.firstName" name="firstName" />
+        <input id="firstName" type="text" class="form-control" [(ngModel)]="person.firstName" name="firstName" required #firstName="ngModel" />
+        <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">Please enter first name.</div>
     </div>
     <div class="form-group">
         <label for="lastName">Last</label>
-        <input id="lastName" type="text" class="form-control" [(ngModel)]="person.lastName" name="lastName" />
+        <input id="lastName" type="text" class="form-control" [(ngModel)]="person.lastName" name="lastName" required #lastName="ngModel" />
+        <div class="alert alert-danger" *ngIf="lastName.touched && !lastName.valid">Please enter last name.</div>
     </div>
     <br />
     <h3>Address</h3>
     <div class="form-group">
         <label for="address1">Street Address</label>
-        <input id="address1" type="text" class="form-control" [(ngModel)]="person.address.address1" name="address1" />
+        <input id="address1" type="text" class="form-control" [(ngModel)]="person.address.address1" name="address1" required #address1="ngModel" />
+        <div class="alert alert-danger" *ngIf="address1.touched && !address1.valid">Please enter street address.</div>
     </div>
     <div class="form-group">
         <label for="address2">Address Line 2</label>
         <input id="address2" type="text" class="form-control" [(ngModel)]="person.address.address2" name="address2" />
     </div>
     <div class="form-group">
-        <label for="locality">City</label>
-        <input id="locality" type="text" class="form-control" [(ngModel)]="person.address.locality" name="locality" />
+        <label for="locality">City or Locality</label>
+        <input id="locality" type="text" class="form-control" [(ngModel)]="person.address.locality" name="locality" required #locality="ngModel" />
+        <div class="alert alert-danger" *ngIf="locality.touched && !locality.valid">Please enter locality (city, village, etc.).</div>
     </div>
     <div class="form-group">
         <label for="province">State or Province</label>
-        <input id="province" type="text" class="form-control" [(ngModel)]="person.address.province" name="province" />
+        <input id="province" type="text" class="form-control" [(ngModel)]="person.address.province" name="province" required #province="ngModel" />
+        <div class="alert alert-danger" *ngIf="province.touched && !province.valid">Please enter state or province.</div>
     </div>
     <div class="form-group">
         <label for="postCode">Zip or Postcode</label>
-        <input id="postCode" type="text" class="form-control" [(ngModel)]="person.address.postCode" name="postCode" />
+        <input id="postCode" type="text" class="form-control" [(ngModel)]="person.address.postCode" name="postCode" required #postCode="ngModel" />
+        <div class="alert alert-danger" *ngIf="postCode.touched && !postCode.valid">Please enter zip or postal code.</div>
     </div>
     <div class="form-group">
         <label for="country">Country</label>
-        <input id="country" type="text" class="form-control" [(ngModel)]="person.address.country" name="country" />
+        <input id="country" type="text" class="form-control" [(ngModel)]="person.address.country" name="country" required #country="ngModel" />
+        <div class="alert alert-danger" *ngIf="country.touched && !country.valid">Please enter country.</div>
     </div>
     <br />
     <h3>Other Info</h3>
     <div class="form-group">
         <label for="age">Age</label>
-        <input id="age" type="text" class="form-control" [(ngModel)]="person.age" name="age" />
+        <input id="age" type="text" class="form-control" [(ngModel)]="person.age" name="age" required #age="ngModel" />
+        <div class="alert alert-danger" *ngIf="age.touched && !age.valid">Please enter age.</div>
     </div>
     <div class="form-group">
-        <label for="interests">Interests (separated by comma and space: "Reading, Cooking, etc.")</label>
-        <input id="interests" type="text" class="form-control" [(ngModel)]="person.interests" name="interests" />
+        <label for="interests">Interests</label>
+        <input id="interests" type="text" class="form-control" [(ngModel)]="person.interests" name="interests" required #interests="ngModel" />
+        <div class="alert alert-danger" *ngIf="interests.touched && !interests.valid">Please enter interest(s).</div>
     </div>
     <br />
     <br />
@@ -59,5 +68,5 @@
     <br />
     <br />
     <br />
-    <button class="btn btn-primary">Save</button>
+    <button class="btn btn-primary" [disabled]="!f.valid">Save</button>
 </form>
