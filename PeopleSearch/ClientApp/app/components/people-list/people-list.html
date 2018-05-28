@@ -1,0 +1,24 @@
+<h1>People</h1>
+<p>
+    <a [routerLink]="['/people/new']" class="btn btn-primary">New Person</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Picture</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Age</th>
+            <th>Interests</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of people">
+            <td>...</td>
+            <td>{{ p.firstName }}</td>
+            <td>{{ p.address.address1 }}</td>
+            <td>{{ p.age }}</td>
+            <td>{{ p.interests }}</td>
+        </tr>
+    </tbody>
+</table>

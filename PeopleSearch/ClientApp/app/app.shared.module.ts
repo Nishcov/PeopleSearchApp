@@ -13,6 +13,7 @@ import { CounterComponent } from './components/counter/counter.component';
 import { PersonFormComponent } from './components/person-form/person-form.component';
 import { PersonService } from './services/person.service';
 import { AppErrorHandler } from './app.error-handler';
+import { PeopleListComponent } from './components/people-list/people-list';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { AppErrorHandler } from './app.error-handler';
         CounterComponent,
         FetchDataComponent,
         HomeComponent,
-        PersonFormComponent
+        PersonFormComponent,
+        PeopleListComponent
     ],
     imports: [
         CommonModule,
@@ -29,8 +31,9 @@ import { AppErrorHandler } from './app.error-handler';
         FormsModule,
         ToastyModule.forRoot(),
         RouterModule.forRoot([
-            { path: '', redirectTo: 'home', pathMatch: 'full' },
+            { path: '', redirectTo: 'people', pathMatch: 'full' },
             { path: 'people/new', component: PersonFormComponent },
+            { path: 'people', component: PeopleListComponent },
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },
