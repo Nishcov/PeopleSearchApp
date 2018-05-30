@@ -54,8 +54,6 @@ namespace PeopleSearch.Controllers
         [HttpPost]
         public async Task<IActionResult> CreatePerson([FromBody] PersonResource personResource)
         {
-            throw new Exception();
-
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

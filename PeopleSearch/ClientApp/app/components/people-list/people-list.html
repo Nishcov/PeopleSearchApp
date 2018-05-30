@@ -1,7 +1,11 @@
 <h1>People</h1>
-<p>
-    <a [routerLink]="['/people/new']" class="btn btn-primary">New Person</a>
-</p>
+<br />
+<div class="form-group well">
+    <input id="searchBox" type="text" class="form-control" placeholder="Enter a name to search for..." [(ngModel)]="search.name" />
+    <br />
+    <button class="btn btn-primary" (click)="onSearchSubmit()">Search</button>
+    <button class="btn btn-default" (click)="onSearchReset()">Reset</button>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -15,10 +19,19 @@
     <tbody>
         <tr *ngFor="let p of people">
             <td>...</td>
-            <td>{{ p.firstName }}</td>
-            <td>{{ p.address.address1 }}</td>
+            <td>{{ p.firstName + " " + p.lastName }}</td>
+            <td>{{ p.address.address1 }} 
+                <br />
+                {{ p.address.locality + ", " + p.address.province + " " + p.address.postCode }}
+                <br />
+                {{ p.address.country }}
+            </td>
             <td>{{ p.age }}</td>
             <td>{{ p.interests }}</td>
         </tr>
     </tbody>
 </table>
+<p>
+    <a [routerLink]="['/people/new']" class="btn btn-primary">Add a New Person</a>
+</p>
+<br />

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonService } from '../../services/person.service';
 import { ToastyService } from 'ng2-toasty';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-person-form',
@@ -15,14 +16,25 @@ export class PersonFormComponent implements OnInit {
 
     constructor(
         private personService: PersonService,
-        private toastyService: ToastyService) {
+        private toastyService: ToastyService,
+        private router: Router) {
     }
 
     ngOnInit() {
     }
 
     submit() {
-        this.personService.create(this.person)
-            .subscribe(x => console.log(x));
+        var result = this.personService.create(this.person);
+
+        result.subscribe(x => {
+            this.toastyService.success({
+                title: 'Success!',
+                msg: 'New person was saved successfully.',
+                theme: 'bootstrap',
+                showClose: true,
+                timeout: 5000
+            });
+            this.router.navigate(['/people'])
+        });
     }
 }

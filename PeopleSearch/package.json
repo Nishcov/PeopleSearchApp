@@ -3,6 +3,8 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
+    "dev":  "webpack --mode development",
+    "build": "webpack --mode production",
     "test": "karma start ClientApp/test/karma.conf.js"
   },
   "devDependencies": {
@@ -29,7 +31,7 @@
     "awesome-typescript-loader": "3.2.1",
     "bootstrap": "3.3.7",
     "chai": "4.0.2",
-    "css": "2.2.1",
+    "css": "^2.2.3",
     "css-loader": "0.28.4",
     "es6-shim": "0.35.3",
     "event-source-polyfill": "0.0.9",
