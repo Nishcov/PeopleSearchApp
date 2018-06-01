@@ -19,5 +19,7 @@ namespace PeopleSearch.Controllers.Resources
         public int Age { get; set; }
 
         public string Interests { get; set; }
+
+        public string PhotoFileName { get; set; }
     }
 }

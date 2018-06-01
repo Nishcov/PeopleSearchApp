@@ -1,0 +1,13 @@
+<h1>New Person</h1>
+<br />
+<form #f="ngForm" (ngSubmit)="submit()" novalidate>
+    <h3>Add a Photo (optional)</h3>
+    <div class="form-group">
+        <input id="picture" type="file" class="form-control" (change)="uploadPhoto()" />
+    </div>
+    <br />
+    <button class="btn btn-primary" [disabled]="!f.valid">Upload</button>
+    <a [routerLink]="['/people']" class="btn btn-default">Continue without a photo</a>
+    <br />
+    <br />
+</form>

@@ -11,33 +11,15 @@ using System;
 namespace PeopleSearch.Migrations
 {
     [DbContext(typeof(PeopleSearchDbContext))]
-    partial class PeopleSearchDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180530214414_AddPhotosToPersonModel")]
+    partial class AddPhotosToPersonModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.0.3-rtm-10026")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("PeopleSearch.Core.Models.Photo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("FileName")
-                        .IsRequired()
-                        .HasMaxLength(255);
-
-                    b.Property<int>("PersonId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PersonId")
-                        .IsUnique();
-
-                    b.ToTable("Photos");
-                });
 
             modelBuilder.Entity("PeopleSearch.Models.Address", b =>
                 {
@@ -95,17 +77,12 @@ namespace PeopleSearch.Migrations
                         .IsRequired()
                         .HasMaxLength(255);
 
+                    b.Property<string>("PhotoFileName")
+                        .HasMaxLength(255);
+
                     b.HasKey("Id");
 
                     b.ToTable("People");
-                });
-
-            modelBuilder.Entity("PeopleSearch.Core.Models.Photo", b =>
-                {
-                    b.HasOne("PeopleSearch.Models.Person", "Person")
-                        .WithOne("Photo")
-                        .HasForeignKey("PeopleSearch.Core.Models.Photo", "PersonId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("PeopleSearch.Models.Address", b =>

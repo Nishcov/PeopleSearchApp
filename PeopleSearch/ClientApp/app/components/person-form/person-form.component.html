@@ -1,7 +1,7 @@
 <h1>New Person</h1>
 <br />
-<h3>Name</h3>
 <form #f="ngForm" (ngSubmit)="submit()" novalidate>
+    <h3>Name</h3>
     <div class="form-group">
         <label for="firstName">First</label>
         <input id="firstName" type="text" class="form-control" [(ngModel)]="person.firstName" name="firstName" required #firstName="ngModel" />
@@ -55,12 +55,6 @@
         <input id="interests" type="text" class="form-control" [(ngModel)]="person.interests" name="interests" required #interests="ngModel" />
         <div class="alert alert-danger" *ngIf="interests.touched && !interests.valid">Please enter interest(s).</div>
     </div>
-    <div class="form-group">
-        <label for="picture">Photo (optional)</label>
-        <input id="picture" type="text" class="form-control" />
-    </div>
-    <button class="btn">Upload</button>
-    <br />
     <br />
     <br />
     <button class="btn btn-primary" [disabled]="!f.valid">Save</button>

@@ -25,6 +25,7 @@ namespace PeopleSearch.Persistence
         {
             return await context.People
                 .Include(p => p.Address)
+                .Include(p => p.Photo)
                 .ToListAsync();
         }
 
@@ -32,6 +33,7 @@ namespace PeopleSearch.Persistence
         {
             return await context.People
                 .Include(p => p.Address)
+                .Include(p => p.Photo)
                 .SingleOrDefaultAsync(p => p.Id == id);
         }
 

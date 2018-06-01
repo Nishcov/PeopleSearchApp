@@ -34,7 +34,7 @@ export class PersonFormComponent implements OnInit {
                 showClose: true,
                 timeout: 5000
             });
-            this.router.navigate(['/people'])
+            this.router.navigate(['/people/', this.person.id])
         });
     }
 }

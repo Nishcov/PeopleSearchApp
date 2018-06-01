@@ -14,6 +14,7 @@ import { PersonFormComponent } from './components/person-form/person-form.compon
 import { PersonService } from './services/person.service';
 import { AppErrorHandler } from './app.error-handler';
 import { PeopleListComponent } from './components/people-list/people-list';
+import { PersonPhotoComponent } from './components/person-photo/person-photo.component';
 
 @NgModule({
     declarations: [
@@ -23,7 +24,8 @@ import { PeopleListComponent } from './components/people-list/people-list';
         FetchDataComponent,
         HomeComponent,
         PersonFormComponent,
-        PeopleListComponent
+        PeopleListComponent,
+        PersonPhotoComponent
     ],
     imports: [
         CommonModule,
@@ -33,6 +35,7 @@ import { PeopleListComponent } from './components/people-list/people-list';
         RouterModule.forRoot([
             { path: '', redirectTo: 'people', pathMatch: 'full' },
             { path: 'people/new', component: PersonFormComponent },
+            { path: 'people/:id', component: PersonPhotoComponent },
             { path: 'people', component: PeopleListComponent },
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },

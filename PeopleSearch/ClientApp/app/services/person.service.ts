@@ -13,6 +13,11 @@ export class PersonService {
             .map(res => res.json());
     }
 
+    getPerson() {
+        return this.http.get('/api/people/{id}')
+            .map(res => res.json());
+    }
+
     create(person: any) {
         return this.http.post('/api/people', person)
             .map(res => res.json());

@@ -11,6 +11,7 @@ using PeopleSearch.Persistence;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using PeopleSearch.Core;
+using PeopleSearch.Core.Models;
 
 namespace PeopleSearch
 {
@@ -26,6 +27,7 @@ namespace PeopleSearch
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<PhotoSettings>(Configuration.GetSection("PhotoSettings"));
             services.AddScoped<IPersonRepository, PersonRepository>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 

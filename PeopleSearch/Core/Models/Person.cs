@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PeopleSearch.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
@@ -28,5 +29,7 @@ namespace PeopleSearch.Models
         [Required]
         [StringLength(255)]
         public string Interests { get; set; }
+
+        public Photo Photo { get; set; }
     }
 }
